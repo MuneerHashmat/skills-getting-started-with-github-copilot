@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("/activities");
       const activities = await response.json();
+      console.log('Fetched activities:', activities); // Add this line
 
       // Clear loading message
       activitiesList.innerHTML = "";
@@ -19,12 +20,21 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
+        console.log(`Activity ${name} has participants:`, details.participants); // Add this line
 
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          ${details.participants && details.participants.length > 0 ? `
+              <div class="participants-list">
+                  <h5>Current Participants:</h5>
+                  <ul>
+                      ${details.participants.map(email => `<li>${email}</li>`).join('')}
+                  </ul>
+              </div>
+          ` : '<p>No current participants</p>'}
         `;
 
         activitiesList.appendChild(activityCard);
