@@ -74,6 +74,27 @@ section h3 {
   margin-bottom: 8px;
 }
 
+.participants-list {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-top: 1px solid #eee;
+  display: block; /* Add this line */
+}
+
+.participants-list h5 {
+  color: #666;
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+
+.participants-list ul {
+  list-style-type: circle;
+  padding-left: 20px;
+  color: #555;
+  font-size: 0.9em;
+  display: block; /* Add this line */
+}
+
 .form-group {
   margin-bottom: 15px;
 }
